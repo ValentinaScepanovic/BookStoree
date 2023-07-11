@@ -1,0 +1,29 @@
+
+<div class="header">
+    <img src="https://logomakercdn.truic.com/ux-flow/industry/bookstore-meta.png">
+    <a routerLink="/"> <h1>Book Store</h1> </a>
+    <input type="text" [(ngModel)]="searchBook" (ngModelChange)="onSearchInput()"placeholder="Search for Book">
+    <nav>
+      <a routerLink="/">Home</a>
+      <a routerLink="/books">Books</a>
+      <a routerLink="/bestsellers">Bestsellers</a>
+      <a routerLink="/wishList"><span title="Wish List"><i class="fas fa-heart"></i></span></a>
+      <a routerLink="/buyList"><span title="Buy List"><i class="fas fa-shopping-bag"></i></span></a>
+      <a routerLink="/login">Admin</a>
+    </nav> 
+</div>
+<div class="search" *ngIf="searchBook && filteredBooks.length > 0"> 
+  <table>
+  <tbody>
+  <tr *ngFor="let book of filteredBooks">
+    <a [routerLink]="['/book', book.bookId]"(click)="refreshPage(book.bookId)" >
+    <td> <img [src]="book.picture" class="imgSearch"> </td>
+    <td style="font-weight: bold;">{{book.bookName}} </td>
+    <td >{{book.author}}</td>
+    </a>
+  </tr>
+</tbody>
+</table>
+</div>
+
+ <div style="font-weight: bold;" class="nobook" *ngIf="searchBook && filteredBooks.length == 0"> <p>No books found.</p> </div>

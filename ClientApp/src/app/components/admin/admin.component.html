@@ -1,0 +1,174 @@
+<div class="loader" *ngIf="loading"></div>
+<div *ngIf="!loading">
+<div class="header">
+<h1 class="H1">Admin page</h1>
+<button type="button" class="button add" (click)="form()">Add New Book</button>
+</div>
+<hr>
+<div class="books">
+<div *ngFor="let book of books"> 
+  <div class="book">
+    <div> <img class="img" [src]="book.picture"> </div>
+    <div class="info">
+    <div style="font-weight: bold;">{{book.bookName}}</div>
+    <br>
+    <div>{{book.author}} </div>
+    <br>
+    <div>{{book.genre}} </div>
+    <br>
+    <div><button type="button" class="button" (click)="formEdit(book.bookId)">Edit Book</button> 
+    <br>
+    <button type="button" class="button" (click)="formDelete(book.bookId)">Delete Book</button></div>
+    </div>
+  </div>
+</div>
+</div>
+<form #newbook="ngForm" class="form" *ngIf="formVisible">
+    <div class="form-content">
+      <div class="form-header">
+        <h2>Add New Book!</h2>
+        <button class="close" class="button" (click)="form()">&times;</button>
+      </div>
+      <div class="form-body">
+        <div>
+          <label for="bookName">Book name:</label>
+          <br>
+          <input type="text" name="bookName" class="input" [(ngModel)]="newBook.bookName" 
+          required placeholder="Enter book name">
+        </div>
+        <br>
+        <div>
+          <label for="author">Author:</label>
+          <br>
+          <input type="text" name="author" class="input" [(ngModel)]="newBook.author" 
+          required placeholder="Enter author name">
+        </div>
+        <br>
+        <div>
+          <label for="genre">Genre:</label>
+          <br>
+          <select name="genre" class="input" [(ngModel)]="newBook.genreId" required>
+            <option value="">Select a genre</option>
+            <option *ngFor="let genre of genres" [value]="genre.genreID">{{ genre.name }}</option>
+          </select>
+        </div>
+        <br>
+        <div>
+          <label for ="description">Description: </label>
+          <br>
+          <textarea type="text" name="description" class="input" [(ngModel)]="newBook.description" 
+          required placeholder="Description about book"> </textarea>
+        </div>
+        <br>
+          <div> 
+            <label for="price">Price: </label>
+            <br>
+            <input type="number" name="price" class="input" [(ngModel)]="newBook.price" required placeholder="Book price">
+          </div>
+         <br> 
+          <div>
+            <label for ="isBestseller"> Is this book a Internacional BestSeller?</label>
+            <label>
+              <input type="radio" name="isBestseller" [(ngModel)]="newBook.isBestseller" [value]=true> Yes
+            </label>
+            <label>
+              <input type="radio" name="isBestseller" [(ngModel)]="newBook.isBestseller" [value]=false> No
+            </label>
+          </div>
+        <br>
+        <div>
+            <label for="pictures">Select a Picture:</label>
+            <br>
+            <input type="file" id="picture" name="picture" (change)="onFileSelected($event)"/>
+            <label class="button" for="picture">Choose File</label>
+        </div>
+      </div>
+      <br>
+      <div class="form-footer">
+        <button type="button" class="button" (click)="onSubmit()" [disabled]="!newbook.valid">Save Book</button>
+        <button type="button" class="button" (click)="form()"> Close </button>
+    </div>
+    </div>
+</form>
+
+<form #edit="ngForm" class="form" *ngIf="formEditVisible">
+  <div class="form-content">
+    <div class="form-header">
+      <h2>Edit Book!</h2>
+      <button class="close" class="button" (click)="closeEdit()">&times;</button>
+    </div>
+    <div class="form-body">
+      <div>
+        <label for="bookName">Book name:</label>
+        <br>
+        <input type="text" name="bookName" class="input" [(ngModel)]="editBook.bookName" required>
+      </div>
+      <br>
+      <div>
+        <label for="author">Author:</label>
+        <br>
+        <input type="text" name="author" class="input" [(ngModel)]="editBook.author" required>
+      </div>
+      <br>
+      <div>
+       <label for="ganre">Genre:</label>
+       <br>
+       <select name="genre" class="input" [(ngModel)]="editBook.genreId" required>
+        <option value="">Select a genre</option>
+        <option *ngFor="let genre of genres" [value]="genre.genreID">{{ genre.name }}</option>
+      </select>
+      </div>
+      <br>
+      <div>
+        <label for ="description">Description: </label>
+        <br>
+        <textarea type="text" name="description" class="input" [(ngModel)]="editBook.description" required></textarea>
+      </div>
+      <br>
+      <div> 
+        <label for="price">Price: </label>
+        <br>
+        <input type="number" name="price" class="input" [(ngModel)]="editBook.price" required placeholder="Book price">
+      </div>
+     <br> 
+      <div>
+        <label for ="isBestseller"> Is this book a Internacional BestSeller?</label>
+        <label>
+          <input type="radio" name="isBestseller" [(ngModel)]="editBook.isBestseller" [value]=true> Yes
+        </label>
+        <label>
+          <input type="radio" name="isBestseller" [(ngModel)]="editBook.isBestseller" [value]=false> No
+        </label>
+      </div>
+      <br>
+      <div>
+          <label for="picture">Select a Picture:</label>
+          <br>
+          <input type="file" id="picture" name="picture" (change)="onFileSelected($event)"/>
+      </div>
+    </div>
+    <br>
+    <div class="form-footer">
+      <button type="button" class="button" (click)="editThisBook(editBook.bookId)"[disabled]="!edit.valid">Edit Book</button>
+      <button type="button" class="button" (click)="closeEdit()"> Close </button>
+  </div>
+  </div>
+</form>
+
+<form #deleteBook="ngForm" class="form" *ngIf="formDeleteVisible">
+  <div class="form-content">
+    <div class="form-header">
+      <h2>Delete Book!</h2>
+      <button class="close" class="button" (click)="closeDelete()">&times;</button>
+    </div>
+    <div class="form-body">
+      <p> Are you sure you wanna delete this book?</p>
+    </div>
+    <br>
+    <div class="form-footer">
+      <button type="button" class="button" (click)="deleteThisBook()">Delete</button>
+      <button type="button" class="button" (click)="closeDelete()"> Close </button>
+  </div>
+  </div>
+</form>
+</div>

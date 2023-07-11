@@ -1,0 +1,26 @@
+footer {
+  margin-top: auto;
+  background-color: burlywood;
+  padding: 20px;
+  text-align: center;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: burlywood;
+  }
+  
+  .footer h1 {
+    font-size: 30px;
+    align-items: center;
+  }
+  img {
+    width: 50px; 
+    height: 50px; 
+  }
+  i{
+    color:black;
+    font-size: 30px; 
+    margin-left: 20px;
+  }

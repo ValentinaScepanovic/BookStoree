@@ -1,0 +1,22 @@
+<div class="loader" *ngIf="loading"></div>
+<div *ngIf="!loading">
+<div class="header">
+    <h1 class="H1">Book - {{book.bookName}}</h1>
+</div>
+ <hr>
+
+ <div class="book">
+    <img class="img" [src]="book.picture">
+    <div class="info">
+    <div class="name">{{book.bookName}}</div>
+    <div class="author">{{book.author}} </div>
+    <div class="genre">Genre: {{book.genre.name}} </div>
+    <div class="genre">Price: {{book.price}} EUR</div>
+    <div class="des">Description:</div>
+    <div class="description">{{book.description}}</div>
+    <div><button class="button" (click)="addToWish()">Add to Wish List</button></div>
+    <div><button class="button" (click)="addToBuy()">Add to Buy List</button></div>
+    </div>
+ </div>
+
+</div>

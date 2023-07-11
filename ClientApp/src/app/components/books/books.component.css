@@ -1,0 +1,36 @@
+.drop-down{
+  margin-right: 20px;
+}
+.label{
+  font-size: 20px;
+  padding-right: 10px;
+}
+.input{
+  border: 2px solid burlywood;
+  border-radius: 4px;
+  width: 200px;
+  height: 25px;
+  }
+  option{
+    color:#A0522D;
+  }
+
+.books{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  .book{
+    display:flex;
+    margin-bottom: 50px;
+  }
+  .info{
+    margin-top: 20px;
+    margin-left:20px;
+  }
+  .img{
+    width:250px; 
+    height:320px
+  }

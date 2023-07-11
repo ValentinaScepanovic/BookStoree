@@ -1,0 +1,47 @@
+<div class="loader" *ngIf="loading"></div>
+<div *ngIf="!loading">
+<div class="header">
+    <h1 class="H1">Home</h1>
+</div>
+ <hr>
+ <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig" class="backSlide">  
+  <div ngxSlickItem *ngFor="let image of images">  
+    <img src="{{ image.img }}" class="imgSlide">  
+  </div>  
+</ngx-slick-carousel> 
+
+ <h2>New Titles</h2>
+<div class="books">
+<div *ngFor="let book of books"> 
+  <div class="book">
+    <a [routerLink]="['/book', book.bookId]">
+    <div> <img class="img" [src]="book.picture"> </div>
+    <div class="info">
+    <div style="font-weight: bold;">{{book.bookName}}</div>
+    <br>
+    <div>{{book.author}} </div>
+  </div>
+  </a>
+</div>
+</div>
+</div>
+
+<div class="qoute" >
+    <p>That's a think about books. They let you travel without moving your feet.</p>
+</div>
+
+ <h2 >Top Titles</h2>
+<div class="books">
+<div *ngFor="let book of bestsellerBooks"> 
+  <div class="book">
+    <a [routerLink]="['/book', book.bookId]">
+    <div> <img class="img" [src]="book.picture"> </div>
+    <div class="info">
+    <div style="font-weight: bold;">{{book.bookName}}</div>
+    <br>
+    <div>{{book.author}} </div>
+  </div>
+  </a>
+</div>
+</div>
+</div>

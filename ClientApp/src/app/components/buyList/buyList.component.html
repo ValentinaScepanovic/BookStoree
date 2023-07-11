@@ -1,0 +1,126 @@
+<div class="loader" *ngIf="loading"></div>
+<div *ngIf="!loading">
+<div class="header">
+    <h1 class="H1">Your Buy List</h1>
+</div>
+ <hr>
+ <div class="book" *ngFor="let book of buyList">
+    <a [routerLink]="['/book', book.bookId]">
+   <div> <img class="img" [src]="book.picture"> </div> </a>
+   <div>
+    <a [routerLink]="['/book', book.bookId]">
+    <div class="name">{{book.bookName}}</div>
+    <div class="author">{{book.author}} </div> 
+    <div class="price">Price: {{book.price}} EUR</div>
+  </a>
+    <div><button class="button" (click)="openRemoveForm(book.bookId)">Remove from Buy List</button></div>
+    </div>
+ </div>
+ <div class="total">Total Price: {{ totalPrice }} EUR</div>
+<div class="pos">
+ <button class="button" [disabled]="!buyList || buyList.length === 0" (click)="buyForm()">Buy Books</button>
+</div>
+    <form #removeBook="ngForm" class="form" *ngIf="formRemove">
+        <div class="form-content">
+          <div class="form-header">
+            <h2>Remove Book!</h2>
+            <button class="close" class="button" (click)="closeRemoveForm()">&times;</button>
+          </div>
+          <div class="form-body">
+            <p> Are you sure you wanna remove this book from your Buy List?</p>
+          </div>
+          <br>
+          <div class="form-footer">
+            <button type="button" class="button" (click)="removeFromBuyList(book)">Remove</button>
+            <button type="button" class="button" (click)="closeRemoveForm()"> Close </button>
+        </div>
+        </div>
+    </form>
+
+    <form #buyBook="ngForm" class="form" *ngIf="formBuy">
+        <div class="form-content">
+          <div class="form-header">
+            <h2>Buy Books!</h2>
+            <button class="close" class="button" (click)="buyForm()">&times;</button>
+          </div>
+          <div class="form-body">
+            <div class="form-row">
+            <div>
+              <label for="name">Name:</label>
+              <br>
+              <input type="text" name="name" class="input" placeholder="Enter your name" required>
+            </div>
+            <div>
+                <label for="surname">Surname:</label>
+                <br>
+                <input type="text" name="surname" class="input"  placeholder="Enter your surname" required>
+              </div>
+            </div>  
+            <div class="form-row">
+              <div>
+                <label for="e-mail">E-mail:</label>
+                <br>
+                <input type="text" name="e-mail" class="input"  placeholder="Enter your e-mail" required>
+              </div>
+              <div>
+                <label for="phone">Phone number:</label>
+                <br>
+                <input type="number" name="phone" class="input"  placeholder="Enter your phone number" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="country">Country:</label>
+                <br>
+                <input type="text" name="country" class="input"  placeholder="Enter country" required>
+              </div>
+              <div>
+                <label for="city">City:</label>
+                <br>
+                <input type="text" name="city" class="input" placeholder="Enter city" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="zip">Zip-Code:</label>
+                <br>
+                <input type="number" name="zip" class="input" placeholder="Enter zip code" required>
+              </div>
+              <div>
+                <label for="address">Address:</label>
+                <br>
+                <input type="text" name="address" class="input" placeholder="Enter your address" required>
+              </div>
+            </div>
+            <div> 
+              <label for="payment">Payment method:</label>
+              <label>
+                <input type="radio" name="payment" [value]=true  [(ngModel)]="selectedPayment"> Credit Card </label>
+              <label>
+                <input type="radio" name="payment" [value]=false  [(ngModel)]="selectedPayment"> Cash on Delivery </label>
+              </div>
+              <div *ngIf="selectedPayment" class="payment">
+                <div>
+                  <label for="cardNumber">Card Number:</label>
+                  <br>
+                  <input type="number" name="cardNumber" class="input" placeholder="Enter card number" required>
+                </div>
+                <div>
+                  <label for="expiryDate">Expiry Date:</label>
+                  <br>
+                  <input type="text" name="expiryDate" class="input"placeholder="Enter expiry date" required>
+                </div>
+                <div>
+                  <label for="cvv">CVV:</label>
+                  <br>
+                  <input type="number" name="cvv" class="input" placeholder="Enter CVV" required>
+                </div>
+              </div>
+            </div>
+          <div class="form-footer">
+            <button type="button" class="button" (click)="buy()" [disabled]="buyBook.invalid || !buyBook.dirty">Buy Books</button>
+            <button type="button" class="button" (click)="buyForm()"> Close </button>
+          </div>
+        </div>
+    </form>
+</div>

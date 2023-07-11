@@ -1,0 +1,35 @@
+<div class="loader" *ngIf="loading"></div>
+<div *ngIf="!loading">
+<div class="header">
+    <h1 class="H1">Your Wish List</h1>
+</div>
+ <hr>
+ <div class="book" *ngFor="let book of wishList">
+ <a [routerLink]="['/book', book.bookId]">
+   <div> <img class="img" [src]="book.picture"> </div> </a>
+   <div>
+    <a [routerLink]="['/book', book.bookId]">
+    <div class="name">{{book.bookName}}</div>
+    <div class="author">{{book.author}} </div> 
+    <div class="price">Price: {{book.price}} EUR</div> </a>
+    <div><button class="button" (click)="addToBuy(book)">Add to Buy List</button></div>
+    <div><button class="button" (click)="openForm(book.bookId)">Remove from Wish List</button></div>
+</div>
+ </div>
+<form #removeBook="ngForm" class="form" *ngIf="form">
+    <div class="form-content">
+      <div class="form-header">
+        <h2>Remove Book!</h2>
+        <button class="close" class="button" (click)="closeForm()">&times;</button>
+      </div>
+      <div class="form-body">
+        <p> Are you sure you wanna remove this book from Wish List?</p>
+      </div>
+      <br>
+      <div class="form-footer">
+        <button type="button" class="button" (click)="removeFromWishList()">Remove</button>
+        <button type="button" class="button" (click)="closeForm()"> Close </button>
+    </div>
+    </div>
+  </form>
+</div>

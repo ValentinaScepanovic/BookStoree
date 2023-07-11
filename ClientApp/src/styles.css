@@ -1,0 +1,106 @@
+
+html, body { height: 100%; 
+overflow-x: hidden;}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a{
+  text-decoration: none;
+  color: black;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.H1{
+ font-size: 35px;
+ margin-left: 25px;
+ margin-top: 30px;
+ margin-right: 10px;
+}
+hr {
+  height: 2px; 
+  background-color: burlywood; 
+}
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid burlywood;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.button{ 
+  background-color: burlywood;
+  border: none;
+  border-radius: 20px;
+  padding: 10px ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button:hover {
+  color: #A0522D ;
+}
+.form {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content {
+  background-color: bisque;
+  border-radius: 5px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-header h2 {
+  margin: 0;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: burlywood;
+  border: none;
+  border-radius: 30px;
+}

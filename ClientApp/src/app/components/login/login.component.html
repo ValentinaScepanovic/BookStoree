@@ -1,0 +1,43 @@
+<div class="loader" *ngIf="loading"></div>
+<div class="back-img" *ngIf="!loading">
+  <div class="loginPosition">
+  <div class="loginStyle">
+    <p class="text"> Are you admin?
+      <br>
+      Need to login first! </p>
+    <button type="button" (click)="logIn()" class="button">Login</button>
+ </div>
+</div>
+
+
+<form #log="ngForm" class="form" *ngIf="logVisible">
+    <div class="form-content">
+      <div class="form-header">
+        <h1>Login</h1>
+        <button class="close" (click)="logIn()">&times;</button>
+      </div>
+      <div class="form-body">
+        <div>
+          <label for="userName">Username*</label>
+          <br>
+          <input type="text" class="input" name="userName" [(ngModel)]="loginFormData.userName" 
+          required placeholder="Enter your name">
+        </div>
+        <br>
+        <div>
+          <label for="password">Password*</label>
+          <br>
+          <input type="password" class="input" name="password" [(ngModel)]="loginFormData.password" 
+          required placeholder="Enter your password">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-footer">
+        <button type="button" (click)="onSubmitLogin()" class="button" [disabled]="!log.valid">Login </button>
+        <button type="button" (click)="logIn()" class="button">Close</button>
+    </div>
+    </div>
+</form>
+</div>
+

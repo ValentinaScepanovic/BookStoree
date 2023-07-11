@@ -1,0 +1,20 @@
+  .books{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  .book{
+    display:flex;
+    margin-right: 50px;
+    margin-bottom: 50px;
+  }
+  .info{
+    margin-top: 20px;
+    margin-left:10px;
+  }
+  .img{
+    width:250px; 
+    height:320px
+  }

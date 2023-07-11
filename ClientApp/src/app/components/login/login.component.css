@@ -1,0 +1,66 @@
+.back-img {
+  background-image: url('../../../assets/pictures/pocetna.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.loginPosition{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+}
+.loginStyle{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding:40px;
+  background-color: bisque;
+}
+.text{
+  font-size:17px;
+}
+.form {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-content {
+    background-color: bisque;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: burlywood;
+    border: none;
+    border-radius: 30px;
+  }
+  .input{
+  border: 2px solid burlywood;
+  border-radius: 4px;
+  }

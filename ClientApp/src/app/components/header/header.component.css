@@ -1,0 +1,62 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: burlywood;
+    margin-top:-10px;
+  }
+
+  .header h1 {
+    margin-left:-220px;
+    font-size: 50px;
+    align-items: center;
+  }
+  img {
+    width: 70px; 
+    height: 60px; 
+  }
+  input[type="text"] {
+    padding: 8px 12px;
+    width: 250px;
+    border: 1px solid burlywood;
+    border-radius: 4px;
+    outline: none;
+  }
+  .header nav {
+    margin-right: 15px;
+    font-size: 25px;
+    display: flex;
+    gap: 15px;
+  }
+  .header nav a:hover {
+    color: #A0522D ;
+  }
+  .search{
+    position:absolute;
+    background-color:white;
+    border: 2px solid burlywood;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: none;
+    margin-left: 500px;
+    margin-right: 500px;
+    z-index: 999;
+  }
+  .imgSearch{
+    width: 70px;
+    height: 90px;
+  }
+  .nobook{
+    position:absolute;
+    background-color:white;
+    border: 2px solid burlywood;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: none;
+    margin-left: 600px;
+    margin-right: 500px;
+  }

@@ -1,0 +1,47 @@
+<div class="loader" *ngIf="loading"></div>
+<div *ngIf="!loading">
+<div class="header">
+    <h1 class="H1">Books</h1>
+    <div class="drop-down">
+      <label for="genre" class="label">Genre:</label>
+      <select [(ngModel)]="selectedGenre" class="input" (change)="filterBooksByGenre()">
+        <option value="0">All genres</option>
+        <option *ngFor="let genre of genres" [value]="genre.genreID">{{ genre.name }}</option>
+      </select>
+    </div>
+</div>
+ <hr>
+ <div class="books" *ngIf="filteredBooks.length > 0">
+ <div *ngFor="let book of filteredBooks">
+  <a [routerLink]="['/book', book.bookId]">
+    <div class="book">
+      <div> <img class="img" [src]="book.picture"> </div>
+      <div class="info">
+      <div style="font-weight: bold;">{{book.bookName}}</div>
+      <br>
+      <div>{{book.author}} </div>
+      <br>
+      <div>{{book.genre?.name}} </div>  
+      </div>
+    </div>
+  </a>
+</div>
+ </div>
+ 
+ <div class="books" *ngIf="filteredBooks.length === 0">
+  <div *ngFor="let book of books">
+   <a [routerLink]="['/book', book.bookId]">
+     <div class="book">
+       <div> <img class="img" [src]="book.picture"> </div>
+       <div class="info">
+       <div style="font-weight: bold;">{{book.bookName}}</div>
+       <br>
+       <div>{{book.author}} </div>
+       <br>
+       <div>{{book.genre?.name}} </div>  
+       </div>
+     </div>
+   </a>
+ </div>
+  </div>
+ </div>
